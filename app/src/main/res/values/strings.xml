@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Finterest</string>
+    <string name="all">All</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="cencel">Cencel</string>
+    <string name="ok">Ok</string>
 </resources>
