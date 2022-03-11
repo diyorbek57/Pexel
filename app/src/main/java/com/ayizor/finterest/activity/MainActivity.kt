@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.ayizor.finterest.R
 import com.ayizor.finterest.fragment.HomeFragment
 import com.ayizor.finterest.fragment.ProfileFragment
+import com.ayizor.finterest.fragment.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-inits(savedInstanceState)
+        inits(savedInstanceState)
     }
 
     private fun inits(savedInstanceState: Bundle?) {
@@ -31,9 +32,10 @@ inits(savedInstanceState)
     private val navListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
             var fragment: Fragment? = null
+
             when (item.itemId) {
                 R.id.fragment_home -> fragment = HomeFragment()
-                R.id.fragment_search -> fragment = ProfileFragment()
+                R.id.fragment_search -> fragment = SearchFragment()
                 R.id.fragment_message -> fragment = ProfileFragment()
             }
             assert(fragment != null)

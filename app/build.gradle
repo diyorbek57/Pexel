@@ -41,7 +41,12 @@ dependencies {
     //unsplash
     implementation 'com.github.unsplash:unsplash-photopicker-android:1.0.1'
     //lottie
-    implementation 'com.airbnb.android:lottie:3.4.0'
+    implementation 'com.airbnb.android:lottie:4.1.0'
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    //smart image slider
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
+    implementation 'com.github.Fuadafdhal:Auto-Image-Slider:1.0'
     //
 
     implementation 'androidx.core:core-ktx:1.7.0'

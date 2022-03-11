@@ -30,15 +30,14 @@ class HomeFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     var adapter: HomeAdapter? = null
     private var loading = true
-    var pastVisiblesItems = 0
-    var totalItemCount = 0
-    var visibleItemCount = 0
     private var page = 1
     var counter = 0
     var searchLayout: FrameLayout? = null
     var appBarLayout: AppBarLayout? = null
     var searchBar: EditText? = null
-
+    var pastVisiblesItems = 0
+    var totalItemCount = 0
+    var visibleItemCount = 0
     var progressBar: LottieAnimationView? = null
     var dataService: ApiInterface? = null
     var firstLoad: Boolean = false
@@ -61,14 +60,13 @@ class HomeFragment : Fragment() {
         )
         layoutManager.gapStrategy =
             StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS;
-        layoutManager.reverseLayout
         recyclerView.layoutManager = layoutManager
         val decoration = SpacesItemDecoration(10)
 
         recyclerView.addItemDecoration(decoration)
         dataService = Client.getClient()?.create(ApiInterface::class.java)
         adapter = context?.let { HomeAdapter(ArrayList<Photo>(), it) }
-        recyclerView.adapter = adapter
+        recyclerView.adapter=adapter
         recyclerView.addOnScrollListener(object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
                 Log.d("####", totalItemsCount.toString())
@@ -99,9 +97,9 @@ class HomeFragment : Fragment() {
 //            }
 //        })
 
-        if (!firstLoad) {
+        if (!firstLoad)
             loadPhotos()
-        }
+
 
     }
 
@@ -111,6 +109,7 @@ class HomeFragment : Fragment() {
                 progressBar!!.visibility = View.VISIBLE
                 counter++
             }
+
             override fun onFinish() {
                 loadPhotos()
             }
@@ -120,12 +119,14 @@ class HomeFragment : Fragment() {
 
     private fun loadPhotos() {
 
-        dataService!!.getPhotos(++page, 50, "latest").enqueue(object : Callback<List<Photo>> {
+        dataService!!.getPhotos(page, 30, "latest").enqueue(object : Callback<List<Photo>> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<List<Photo>>, response: Response<List<Photo>>) {
                 firstLoad = true
                 Log.d("Photos", "Photos Fetched " + (response.body()?.size))
+                page++;
                 response.body()?.let { adapter?.addPhotos(it) }
+
                 progressBar!!.visibility = View.GONE
             }
 

@@ -5,4 +5,7 @@
     <string name="description">Description</string>
     <string name="cencel">Cencel</string>
     <string name="ok">Ok</string>
+    <string name="ideas_from_creators">Ideas from creators</string>
+    <string name="ideas_for_you">Ideas for you</string>
+    <string name="_0">0</string>
 </resources>

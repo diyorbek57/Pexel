@@ -16,38 +16,33 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 
-
-class HomeAdapter(val pinsList: ArrayList<Photo>?, val context: Context) :
+class CreatorsIdeasAdapter(val ideasList: ArrayList<Photo>?, val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.pin_item, parent, false)
-        return HomeViewHolder(view)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_ideas_creators, parent, false)
+        return CreatorsIdeasViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is HomeViewHolder) {
-            val photo = pinsList?.get(position)
+        if (holder is CreatorsIdeasViewHolder) {
+            val photo = ideasList?.get(position)
             if (photo != null) {
                 holder.shimmer.visibility = View.VISIBLE
                 Glide.with(context).load(photo.urls.getRegular())
                     .addListener(imageLoadingListener(holder.shimmer)).into(holder.photo)
+                Glide.with(context).load(photo.user.profile_image.small)
+                    .addListener(imageLoadingListener(holder.shimmer)).into(holder.photo)
+
             }
-            holder.description.text = photo?.description
-            holder.title.text = photo?.likes.toString()
+            holder.likes.text = photo?.likes.toString()
         }
     }
 
     override fun getItemCount(): Int {
-        return pinsList!!.size
-    }
-
-    fun addPhotos(photos: List<Photo>) {
-        val lastCount = itemCount
-        pinsList?.addAll(photos)
-        notifyItemRangeInserted(lastCount, photos.size)
+        return ideasList!!.size
     }
 
     fun imageLoadingListener(pendingImage: LottieAnimationView): RequestListener<Drawable> {
@@ -75,12 +70,11 @@ class HomeAdapter(val pinsList: ArrayList<Photo>?, val context: Context) :
         }
     }
 
-    class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CreatorsIdeasViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val photo: ImageView = itemView.findViewById(R.id.iv_pin)
-        val description: TextView = itemView.findViewById(R.id.tv_desc)
-        val title: TextView = itemView.findViewById(R.id.tv_title)
-        val shimmer: LottieAnimationView = itemView.findViewById(R.id.iv_shimmer)
+        val photo: ImageView = itemView.findViewById(R.id.iv_c_ideas)
+        val profile: ImageView = itemView.findViewById(R.id.iv_c_profile)
+        val likes: TextView = itemView.findViewById(R.id.tv_c_ideas_like)
+        val shimmer: LottieAnimationView = itemView.findViewById(R.id.iv_c_shimmer)
     }
-
 }
