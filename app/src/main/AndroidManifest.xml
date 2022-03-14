@@ -2,8 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ayizor.finterest">
-
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
+    <queries>
+        <package android:name="com.facebook.katana"/>
+        <package android:name="com.whatsapp"/>
+        <package android:name="org.telegram.messenger"/>
+        <package android:name="com.twitter.android"/>
+        <package android:name="com.google.android.apps.messaging"/>
+        <package android:name="com.google.android.gm"/>
+    </queries>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +23,16 @@
         <activity
             android:name=".fragment.HomeFragment"
             android:exported="false"
-            tools:ignore="Instantiatable" />
+            tools:ignore="Instantiatable" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".fragment.DetailsFragment"
+            android:exported="true" />
         <activity
             android:name=".fragment.ProfileFragment"
             android:exported="false"
@@ -29,6 +46,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

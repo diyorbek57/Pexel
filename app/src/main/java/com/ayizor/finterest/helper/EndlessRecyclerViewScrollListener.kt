@@ -1,8 +1,8 @@
 package com.ayizor.finterest.helper
 
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener {
@@ -29,12 +29,12 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
 
     constructor(layoutManager: GridLayoutManager) {
         mLayoutManager = layoutManager
-        visibleThreshold = visibleThreshold * layoutManager.spanCount
+        visibleThreshold *= layoutManager.spanCount
     }
 
     constructor(layoutManager: StaggeredGridLayoutManager) {
         mLayoutManager = layoutManager
-        visibleThreshold = visibleThreshold * layoutManager.spanCount
+        visibleThreshold *= layoutManager.spanCount
     }
 
     fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {

@@ -5,8 +5,11 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.ayizor.finterest.R
@@ -15,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+
 
 class CreatorsIdeasAdapter(val ideasList: ArrayList<Photo>?, val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -31,13 +35,25 @@ class CreatorsIdeasAdapter(val ideasList: ArrayList<Photo>?, val context: Contex
             val photo = ideasList?.get(position)
             if (photo != null) {
                 holder.shimmer.visibility = View.VISIBLE
-                Glide.with(context).load(photo.urls.getRegular())
-                    .addListener(imageLoadingListener(holder.shimmer)).into(holder.photo)
-                Glide.with(context).load(photo.user.profile_image.small)
-                    .addListener(imageLoadingListener(holder.shimmer)).into(holder.photo)
+                Glide.with(context).load(photo.urls.getRegular()).addListener(imageLoadingListener(holder.shimmer))
+                    .into(holder.photo)
+                Glide.with(context).load(photo.user.profile_image.medium).addListener(imageLoadingListener(holder.shimmer))
+                    .into(holder.profile)
 
             }
             holder.likes.text = photo?.likes.toString()
+            holder.profile.viewTreeObserver.addOnGlobalLayoutListener(object :
+                OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    holder.profile.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    val params = RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT
+                    )
+                    params.setMargins(0, 0, 0, holder.profile.height / 2)
+                    holder.layout.layoutParams = params
+                }
+            })
         }
     }
 
@@ -76,5 +92,6 @@ class CreatorsIdeasAdapter(val ideasList: ArrayList<Photo>?, val context: Contex
         val profile: ImageView = itemView.findViewById(R.id.iv_c_profile)
         val likes: TextView = itemView.findViewById(R.id.tv_c_ideas_like)
         val shimmer: LottieAnimationView = itemView.findViewById(R.id.iv_c_shimmer)
+        val layout: RelativeLayout = itemView.findViewById(R.id.rl_main)
     }
 }

@@ -31,11 +31,11 @@ class Utils {
             description
         (view1.findViewById<View>(R.id.alert_dialog_cencel_text) as TextView).setText(R.string.cencel)
         (view1.findViewById<View>(R.id.alert_dialog_ok_text) as TextView).setText(R.string.ok)
-        view1.findViewById<View>(R.id.alert_dialog_cencel).setOnClickListener { v12: View? ->
+        view1.findViewById<View>(R.id.alert_dialog_cencel).setOnClickListener {
             dialogAction.alertActionListener(false)
             alertDialog.dismiss()
         }
-        view1.findViewById<View>(R.id.alert_dialog_ok).setOnClickListener { v1: View? ->
+        view1.findViewById<View>(R.id.alert_dialog_ok).setOnClickListener {
             dialogAction.alertActionListener(true)
             alertDialog.dismiss()
         }

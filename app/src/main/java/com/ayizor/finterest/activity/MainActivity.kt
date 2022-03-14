@@ -6,9 +6,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ayizor.finterest.R
+import com.ayizor.finterest.fragment.ChatFragment
 import com.ayizor.finterest.fragment.HomeFragment
-import com.ayizor.finterest.fragment.ProfileFragment
-import com.ayizor.finterest.fragment.SearchFragment
+import com.ayizor.finterest.fragment.IdeasFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -35,15 +35,24 @@ class MainActivity : AppCompatActivity() {
 
             when (item.itemId) {
                 R.id.fragment_home -> fragment = HomeFragment()
-                R.id.fragment_search -> fragment = SearchFragment()
-                R.id.fragment_message -> fragment = ProfileFragment()
+                R.id.fragment_search -> fragment = IdeasFragment()
+                R.id.fragment_message -> fragment = ChatFragment()
             }
             assert(fragment != null)
-            supportFragmentManager.beginTransaction().replace(R.id.frFragment, fragment!!)
-                .commit()
+            if (fragment != null) {
+                supportFragmentManager.beginTransaction().addToBackStack(fragment.javaClass.name)
+                    .replace(R.id.frFragment, fragment!!)
+                    .commit()
+            }
             true
         }
-    var doubleBackToExitPressedOnce = false
 
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 3) {
+            finish()
+        } else {
+            super.onBackPressed()
+        }
+    }
 
 }

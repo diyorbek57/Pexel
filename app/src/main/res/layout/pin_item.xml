@@ -24,11 +24,11 @@
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/iv_shimmer"
-                android:adjustViewBounds="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="anim_shimmer.json"
                 app:lottie_loop="true"
@@ -44,7 +44,7 @@
         android:layout_below="@id/cv_pin"
         android:layout_marginHorizontal="10dp"
         android:maxLines="1"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -55,7 +55,7 @@
         android:layout_below="@id/tv_title"
         android:layout_marginHorizontal="10dp"
         android:maxLines="1"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="13sp" />
 
     <ImageView

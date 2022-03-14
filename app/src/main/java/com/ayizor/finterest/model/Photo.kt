@@ -9,6 +9,8 @@ data class Photo(
     @Expose val id: String = "",
     @SerializedName("description")
     @Expose val description: String = "",
+    @SerializedName("created_at")
+    @Expose val created_at: String = "",
     @SerializedName("color")
     @Expose val color: String = "",
     @SerializedName("width")
@@ -20,7 +22,6 @@ data class Photo(
     @SerializedName("urls")
     @Expose val urls: Urls,
     @SerializedName("user")
-    @Expose
-    val user: User
+    @Expose val user: User
 ) : Serializable
 

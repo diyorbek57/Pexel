@@ -14,17 +14,53 @@
         <entry key="..\:/Programming/AndroidProjects/Finterest/app/src/main/res/layout/home_item.xml" value="0.16296296296296298" />
         <entry key="..\:/Programming/AndroidProjects/Finterest/app/src/main/res/layout/pin_item.xml" value="0.17552083333333332" />
         <entry key="..\:/Programming/AndroidProjects/Finterest/app/src/main/res/menu/bottom_navigation.xml" value="0.17552083333333332" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/back_top_closer.xml" value="0.334" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/bottom_sheet_back.xml" value="0.334" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/details_gradient.xml" value="0.269" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_camera_white.xml" value="0.269" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_clear.xml" value="0.3335" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_copy_black.xml" value="0.265" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_copy_white.xml" value="0.265" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_group.xml" value="0.269" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_home.xml" value="0.261" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_left_arrow.xml" value="0.269" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_message.xml" value="0.261" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_more_horiz_white.xml" value="0.281" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_search.xml" value="0.261" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_search_white.xml" value="0.269" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/ic_share.xml" value="0.334" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/rounded_corner_shape.xml" value="0.269" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/shape_bottom_rounded.xml" value="0.3635" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/shape_rounded.xml" value="0.1" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/shape_rounded_for_bnv.xml" value="0.1" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/drawable/tab_indicator.xml" value="0.1" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/font/average_sans.xml" value="0.1" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/font/open_sans_light.xml" value="0.3927083333333333" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_chat.xml" value="0.2813299232736573" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_details.xml" value="0.1" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_details_item.xml" value="0.33" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_explore.xml" value="0.12314814814814815" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_ideas.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_messages.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_profile.xml" value="0.22916666666666666" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_search.xml" value="0.24040920716112532" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_search_result.xml" value="0.12314814814814815" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/fragment_updates.xml" value="0.18854166666666666" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/frament_updates.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_ideas.xml" value="0.3625" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_ideas_creators.xml" value="0.3625" />
-        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/pin_item.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_list_view.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_messages.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_profiles_gone.xml" value="0.18854166666666666" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_search_helper_text.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_search_profiles_visible.xml" value="0.17592592592592593" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_slider.xml" value="0.10185185185185185" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_sync_contact.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/item_updates.xml" value="0.3625" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/pin_item.xml" value="0.1" />
+        <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/layout/pin_options_bottomsheet.xml" value="0.3625" />
         <entry key="..\:/Programming/AndroidProjects/Pinterest/app/src/main/res/menu/bottom_navigation.xml" value="0.3625" />
       </map>
     </option>

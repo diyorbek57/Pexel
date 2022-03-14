@@ -29,6 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -37,16 +40,17 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    implementation 'com.github.bumptech.glide:glide:4.13.1'
     //unsplash
     implementation 'com.github.unsplash:unsplash-photopicker-android:1.0.1'
     //lottie
-    implementation 'com.airbnb.android:lottie:4.1.0'
+    implementation 'com.airbnb.android:lottie:5.0.3'
     //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
     //smart image slider
-    implementation 'com.github.smarteist:autoimageslider:1.4.0'
     implementation 'com.github.Fuadafdhal:Auto-Image-Slider:1.0'
+    //lottie swipe refresh
+    implementation 'com.github.nabil6391:LottieSwipeRefreshLayout:1.0.0'
     //
 
     implementation 'androidx.core:core-ktx:1.7.0'

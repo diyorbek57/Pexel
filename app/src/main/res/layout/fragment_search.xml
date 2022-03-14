@@ -4,82 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="#373737"
+        app:cardCornerRadius="30dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_margin="10dp">
 
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <com.afdhal_fa.imageslider.ImageSlider
-                    android:id="@+id/imageSlide"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    app:iss_auto_cycle="true"
-                    app:iss_delay="0"
-                    app:iss_period="1000"
-                    app:iss_title_color="@color/white"
-                    app:iss_title_gravity="center"
-                    app:iss_with_title="true" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:background="#5B000000" />
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/tv_ideas_from_creators"
+            <ImageView
+                android:id="@+id/iv_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="@string/ideas_from_creators"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_ideas_from_creators"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_search_white" />
 
             <TextView
-                android:id="@+id/tv_ideas_for_you"
+                android:id="@+id/tv_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="@string/ideas_for_you"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/iv_search"
+                android:text="@string/search_for_ideas"
+                android:textColor="#717171"
+                android:textSize="16sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_ideas_for_you"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_popular"
+            <ImageView
+                android:id="@+id/iv_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="Popular on Pinterest"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_popular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_camera_white" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

@@ -8,4 +8,22 @@
     <string name="ideas_from_creators">Ideas from creators</string>
     <string name="ideas_for_you">Ideas for you</string>
     <string name="_0">0</string>
+    <string name="popular_on_pinterest">Popular on Pinterest</string>
+
+    <string name="uploaded_by">" uploaded by "</string>
+    <string name="share_ideas_with_your_friends">Share ideas with your friends</string>
+    <string name="search_by_name_or_email_address">Search by name or email address</string>
+    <string name="message">Message</string>
+    <string name="sync_contacts">Sync contacts</string>
+    <string name="no_similar_images_found">No similar images found</string>
+    <string name="follow">Follow</string>
+    <string name="add_a_comment">Add a comment</string>
+    <string name="more_like_this">More like this</string>
+    <string name="share_to">Share to</string>
+    <string name="download_image">Download image</string>
+    <string name="hide_pin">Hide Pin</string>
+    <string name="report_pin">Report Pin</string>
+    <string name="this_goes_against_pinterest_s_community_guidelines">This goes against Pinterest\'s Community guidelines</string>
+    <string name="search_for_ideas">Search for ideas</string>
+    <string name="cancel">Cancel</string>
 </resources>

@@ -1,10 +1,10 @@
 package com.ayizor.finterest.api
 
 import android.app.appsearch.SearchResults
-import com.ayizor.finterest.model.Download
-import com.ayizor.finterest.model.Photo
+import com.ayizor.finterest.model.*
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -13,9 +13,9 @@ interface ApiInterface {
     @GET("photos/{id}")
     fun getPhoto(
         @Path("id") id: String,
-        @Query("w") width: Int,
-        @Query("h") height: Int
-    ): Call<Photo>
+        @Query("w") width: Int?,
+        @Query("h") height: Int?
+    ): Call<List<Photo>>
 
     @GET("photos")
     fun getPhotos(
@@ -64,4 +64,42 @@ interface ApiInterface {
         @Query("per_page") perPage: Int,
         @Query("orientation") orientation: String
     ): Call<SearchResults>
+
+    @GET("topics")
+    fun getTopics(
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int?,
+        @Query("order_by") orderBy: String
+    ): Call<List<Topic>>
+
+    @GET("topics/{id}/photos")
+    fun getTopictPhotos(
+        @Path("id") id: String?,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int?,
+        @Query("order_by") orderBy: String
+    ): Call<List<Topic>>
+
+    @GET("photos/{id}/related")
+    fun getRelatedPhotos(
+        @Path("id") id: String?,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int?
+    ): Call<RelatedPhotos>
+
+    @GET("search/photos")
+    fun getSearchPhoto(
+        @Query("page") page: Int,
+        @Query("query") query: String,
+        @Query("per_page") perPage: Int
+    ): Call<List<Photo>>
+
+
+    @GET("search/users")
+    fun getSearchProfile(
+        @Query("page") page: Int,
+        @Query("query") query: String,
+        @Query("per_page") perPage: Int
+    ): Call<List<User>>
+
 }

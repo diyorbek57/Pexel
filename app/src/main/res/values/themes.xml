@@ -12,9 +12,47 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
         <!-- Customize your theme here. -->
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
     <style name="ImageView.Circle" parent="">
         <item name="cornerSize">50%</item>
+    </style>
+    <style name="rounded_corner">
+        <item name="cornerSize">10dp</item>
+    </style>
+    <style name="rounded_border_15">
+        <item name="cornerSize">15dp</item>
+    </style>
+
+    <style name="rounded_border_20">
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="top_rounded">
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+    </style>
+
+    <style name="left_rounded">
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+    </style>
+
+    <style name="right_rounded">
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+    <style name="DialogAnimaton">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottomsheet</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottomsheet</item>
+    </style>
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_back</item>
     </style>
 </resources>

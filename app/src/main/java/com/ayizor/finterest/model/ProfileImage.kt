@@ -8,7 +8,7 @@ data class ProfileImage (
     @SerializedName("small")
     @Expose val small: String = "",
     @SerializedName("medium")
-    @Expose val medium: Int? =null,
+    @Expose val medium:String = "",
     @SerializedName("large")
-    @Expose val large: Int? =null
+    @Expose val large: String = ""
 ) : Serializable
