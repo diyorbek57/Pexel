@@ -53,7 +53,7 @@ class IdeasFragment : Fragment() {
         popularsRecyclerView = view.findViewById(R.id.rv_popular)
         search = view.findViewById(R.id.cv_search)
         search.setOnClickListener {
-            replaceFragment(SearchResultFragment(parentFragment?.javaClass?.name))
+            replaceFragment(SearchResultFragment.newInstance(null))
         }
         slider = view.findViewById(R.id.imageSlide)
         val creatorIdeasLayoutManager = GridLayoutManager(
@@ -114,7 +114,7 @@ class IdeasFragment : Fragment() {
 
     private fun replaceFragment(fragment: Fragment) {
         val backStateName = fragment.javaClass.name
-        val manager: FragmentManager = parentFragmentManager
+        val manager: FragmentManager = childFragmentManager
         val ft: FragmentTransaction = manager.beginTransaction()
         ft.replace(R.id.fragment_container, fragment)
         ft.addToBackStack(backStateName)

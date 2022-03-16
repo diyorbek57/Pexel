@@ -9,6 +9,7 @@ import com.ayizor.finterest.R
 import com.ayizor.finterest.fragment.ChatFragment
 import com.ayizor.finterest.fragment.HomeFragment
 import com.ayizor.finterest.fragment.IdeasFragment
+import com.ayizor.finterest.fragment.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.fragment_home -> fragment = HomeFragment()
                 R.id.fragment_search -> fragment = IdeasFragment()
                 R.id.fragment_message -> fragment = ChatFragment()
+                R.id.fragment_profile -> fragment = ProfileFragment()
             }
             assert(fragment != null)
             if (fragment != null) {

@@ -13,13 +13,17 @@
         <package android:name="com.google.android.gm"/>
     </queries>
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:name=".FinterestApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Finterest">
+
+        android:theme="@style/Theme.Finterest"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        tools:targetApi="s"
+        tools:ignore="DataExtractionRules">
         <activity
             android:name=".fragment.HomeFragment"
             android:exported="false"
@@ -32,10 +36,11 @@
         </activity>
         <activity
             android:name=".fragment.DetailsFragment"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".fragment.ProfileFragment"
-            android:exported="false"
+            android:exported="true"
             tools:ignore="Instantiatable" />
         <activity
             android:name=".activity.MainActivity"

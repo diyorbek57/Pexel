@@ -35,7 +35,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text="Popular Mechanics"
                 android:textColor="@color/black"
                 android:textSize="19sp"
                 android:textStyle="bold" />
@@ -44,8 +43,6 @@
                 android:id="@+id/tv_followers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="237k followers"
-                android:textColor="#787878"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -55,10 +52,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_rounded_categories"
-            android:backgroundTint="@color/tv_tint_light"
+            android:backgroundTint="@color/medium_grey"
             android:padding="10dp"
-            android:text="Follow"
-            android:textColor="@color/text_color"
+            android:text="@string/follow"
+            android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold" />
 

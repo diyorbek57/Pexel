@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -46,8 +47,6 @@
                         android:layout_marginEnd="15dp"
                         android:src="@drawable/ic_more_horiz_white"
                         app:tint="@color/white" />
-
-
 
 
                 </RelativeLayout>
@@ -102,10 +101,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/shape_rounded_categories"
-                            android:backgroundTint="@color/tv_tint_light"
+                            android:backgroundTint="@color/medium_grey"
                             android:padding="10dp"
                             android:text="@string/follow"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="17sp"
                             android:textStyle="bold" />
 
@@ -118,7 +117,7 @@
                         android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:text="@string/description"
-                        android:textColor="@color/text_color"
+                        android:textColor="@color/light_grey"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -130,7 +129,7 @@
                         android:paddingHorizontal="15dp"
                         android:paddingVertical="10dp"
                         android:text="@string/appbar_scrolling_view_behavior"
-                        android:textColor="@color/text_color"
+                        android:textColor="@color/light_grey"
                         android:textSize="16sp" />
 
                     <LinearLayout
@@ -159,10 +158,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="end"
                                 android:background="@drawable/shape_rounded_tv_btn"
-                                android:backgroundTint="@color/tv_tint_light"
+                                android:backgroundTint="@color/light_grey"
                                 android:padding="20dp"
-                                android:text="View"
-                                android:textColor="@color/text_color"
+                                android:text="@string/view"
+                                android:textColor="@color/white"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
 
@@ -172,7 +171,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:paddingStart="5dp">
+                            android:paddingStart="5dp"
+                            tools:ignore="RtlSymmetry">
 
                             <TextView
                                 android:id="@+id/tv_btn_save"
@@ -181,7 +181,7 @@
                                 android:background="@drawable/shape_rounded_tv_btn"
                                 android:backgroundTint="#F4000D"
                                 android:padding="20dp"
-                                android:text="Save"
+                                android:text="@string/save"
                                 android:textColor="@color/white"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -211,9 +211,10 @@
                 android:padding="15dp">
 
                 <TextView
+                    android:fontFamily="@font/open_sans_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Comments"
+                    android:text="@string/comments"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -263,6 +264,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:fontFamily="@font/open_sans_bold"
                     android:id="@+id/tv_related"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -285,6 +287,7 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
     <ImageView
         android:id="@+id/iv_btn_back"
         android:layout_width="30dp"

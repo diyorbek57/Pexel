@@ -4,7 +4,6 @@ import android.app.appsearch.SearchResults
 import com.ayizor.finterest.model.*
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -12,10 +11,8 @@ import retrofit2.http.Query
 interface ApiInterface {
     @GET("photos/{id}")
     fun getPhoto(
-        @Path("id") id: String,
-        @Query("w") width: Int?,
-        @Query("h") height: Int?
-    ): Call<List<Photo>>
+        @Path("id") id: String
+    ): Call<Photo>
 
     @GET("photos")
     fun getPhotos(
@@ -92,7 +89,7 @@ interface ApiInterface {
         @Query("page") page: Int,
         @Query("query") query: String,
         @Query("per_page") perPage: Int
-    ): Call<List<Photo>>
+    ): Call<Explore>
 
 
     @GET("search/users")
@@ -100,6 +97,6 @@ interface ApiInterface {
         @Query("page") page: Int,
         @Query("query") query: String,
         @Query("per_page") perPage: Int
-    ): Call<List<User>>
+    ): Call<ResultProfiles>
 
 }

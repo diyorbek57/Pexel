@@ -11,6 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ayizor.finterest.R
+import com.ayizor.finterest.model.Profile
+import com.ayizor.finterest.model.ResultProfiles
 import com.ayizor.finterest.model.User
 import com.bumptech.glide.Glide
 
@@ -21,10 +23,10 @@ class ProfilesAdapter(var context: Context) : RecyclerView.Adapter<RecyclerView.
         private const val VIEW_TYPE_GONE = 1
     }
 
-    private var profiles = ArrayList<User>()
+    private var profiles = ArrayList<Profile>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addProfiles(profiles: ArrayList<User>) {
+    fun addProfiles(profiles: ArrayList<Profile>) {
         this.profiles.addAll(profiles)
         notifyDataSetChanged()
     }

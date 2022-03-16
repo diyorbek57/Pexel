@@ -26,21 +26,40 @@ import androidx.viewpager.widget.ViewPager
 import com.ayizor.finterest.R
 import com.ayizor.finterest.adapter.ChatViewPagerAdapter
 import com.ayizor.finterest.adapter.HistoryAdapter
+import com.ayizor.finterest.adapter.PagerAdapter
+import com.ayizor.finterest.fragment.SearchResultFragment.Companion.newInstance
 import com.ayizor.finterest.helper.HistoryHelper
-import com.example.pinterestappclone.fragment.ExploreFragment
-import com.example.pinterestappclone.fragment.ProfilesFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
-class SearchResultFragment(private val textParent: String?) : Fragment() {
+class SearchResultFragment : Fragment() {
+
+    companion object {
+        private const val KEY_STRING = "string"
+        fun newInstance(text: String?): SearchResultFragment {
+            val args = Bundle()
+            args.putString(KEY_STRING, text)
+            val newFragment = SearchResultFragment()
+            newFragment.arguments = args
+            return newFragment
+        }
+    }
 
     private lateinit var prefsManager: HistoryHelper
     private lateinit var helperAdapter: HistoryAdapter
+    private var textParent: String? = null
+    private var clickCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        textParent = arguments?.getString(KEY_STRING)
+
+        // initialize SharedPreferences manager
         prefsManager = HistoryHelper.getInstance(requireContext())!!
+
+        // initialize adapter of rvHelper
         helperAdapter = HistoryAdapter(requireContext(), getHistory())
     }
 
@@ -59,49 +78,143 @@ class SearchResultFragment(private val textParent: String?) : Fragment() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initViews(view: View) {
+
+        // initialize all view elements
         val ivBtnBack = view.findViewById<ImageView>(R.id.iv_btn_back)
         val etSearch = view.findViewById<EditText>(R.id.et_search)
+        val ivClear = view.findViewById<ImageView>(R.id.iv_clear)
         val rvHelper = view.findViewById<RecyclerView>(R.id.rv_helper)
         val tvCancel = view.findViewById<TextView>(R.id.tv_cancel)
         val llContainer = view.findViewById<LinearLayout>(R.id.ll_container)
         val tlFilter = view.findViewById<TabLayout>(R.id.tl_filter)
         val vpFilter = view.findViewById<ViewPager>(R.id.vp_filter)
+
+        // set layout manager for recyclerview
         rvHelper.layoutManager = LinearLayoutManager(context)
 
         if (textParent.isNullOrEmpty()) {
+
+            // gone back button
             ivBtnBack.visibility = GONE
+
+            // show cancel button
             tvCancel.visibility = VISIBLE
+
+            // show rvHelper
             refreshAdapter(rvHelper)
+
+            // focusable etSearch
             etSearch.showKeyboard()
 
         } else {
-            hideKeyboardFrom(requireContext(), view)
+
+            // hide keyboard
+            hideKeyboardFrom(requireContext(), view, etSearch)
+
+            // hide cancel button
             tvCancel.visibility = GONE
+
+            // show back button
             ivBtnBack.visibility = VISIBLE
+
+            // set text on etSearch
             etSearch.setText(textParent)
+
+            // open search page
             visibleViewPager(rvHelper, llContainer, vpFilter, tlFilter, textParent)
         }
+
+        // set cancel button function when clicked
         tvCancel.setOnClickListener {
             clearFragments()
+            hideKeyboardFrom(requireContext(), view, etSearch)
         }
+
+        // set back button function when clicked
         ivBtnBack.setOnClickListener {
             removeFragment(this)
         }
 
         etSearch.setOnEditorActionListener { _, actionId, event ->
+
+            // check keyboard clicked
             if (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER || actionId == EditorInfo.IME_ACTION_DONE) {
+
+                // check etSearch text not empty
                 if (etSearch.text.isNotEmpty() && etSearch.text.isNotBlank()) {
 
-                    val text = etSearch.text.toString()
-                    helperAdapter.addHelper(text)
-                    hideKeyboardFrom(requireContext(), view)
-                    ivBtnBack.visibility = VISIBLE
-                    tvCancel.visibility = GONE
-                    visibleViewPager(rvHelper, llContainer, vpFilter, tlFilter, text)
+                    if (clickCount == 0) {
+
+                        val text = etSearch.text.toString()
+
+                        // add last search text to prefs manager
+                        helperAdapter.addHelper(text)
+
+                        // hide keyboard
+                        hideKeyboardFrom(requireContext(), view, etSearch)
+
+                        // back button show
+                        ivBtnBack.visibility = VISIBLE
+
+                        // cancel button hide
+                        tvCancel.visibility = GONE
+
+                        // open search page
+                        visibleViewPager(rvHelper, llContainer, vpFilter, tlFilter, text)
+
+                        // update click count
+                        clickCount++
+
+                    } else {
+
+                        // open new fragment for research
+                        replaceFragment(newInstance(etSearch.text.toString()))
+
+                        // hide keyboard
+                        hideKeyboardFrom(requireContext(), view, etSearch)
+
+                        // hide cancel button
+                        tvCancel.visibility = GONE
+
+                        // show back button
+                        ivBtnBack.visibility = VISIBLE
+
+                        // set text on etSearch
+                        etSearch.setText(textParent)
+
+                        // open search page
+                        visibleViewPager(rvHelper, llContainer, vpFilter, tlFilter, textParent)
+
+                    }
                 }
             }
             false
         }
+
+
+        etSearch.setOnTouchListener { _, _ ->
+            // show rvHelper
+            refreshAdapter(rvHelper)
+            // gone back button
+            ivBtnBack.visibility = GONE
+            // show cancel button
+            tvCancel.visibility = VISIBLE
+
+            false
+        }
+
+        helperAdapter.onItemClick(object : HistoryAdapter.RecyclerViewItemClick {
+            override fun onItemClick(text: String) {
+                if (clickCount != 0)
+                    replaceFragment(newInstance(text))
+                else {
+                    etSearch.setText(text)
+                    visibleViewPager(rvHelper, llContainer, vpFilter, tlFilter, text)
+                }
+
+            }
+        })
+
     }
 
     private fun refreshAdapter(recyclerView: RecyclerView) {
@@ -136,14 +249,15 @@ class SearchResultFragment(private val textParent: String?) : Fragment() {
         }
     }
 
-    private fun hideKeyboardFrom(context: Context, view: View) {
+    private fun hideKeyboardFrom(context: Context, view: View, editText: EditText) {
+        editText.clearFocus()
         val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private fun getHistory(): ArrayList<String> {
         val type: Type = object : TypeToken<ArrayList<String>>() {}.type
-        return prefsManager.getArrayList(HistoryHelper.KEY_LIST, type)
+        return prefsManager.getArrayList(HistoryHelper.KEY_ARRAY_LIST, type)
     }
 
     private fun visibleViewPager(
@@ -154,13 +268,16 @@ class SearchResultFragment(private val textParent: String?) : Fragment() {
         text: String?
     ) {
         if (!text.isNullOrEmpty()) {
-
             recyclerView.visibility = GONE
             linearLayout.visibility = VISIBLE
 
-            val pagerAdapter = ChatViewPagerAdapter(parentFragmentManager)
-            pagerAdapter.addFragment(ExploreFragment(text),"Explore")
-            pagerAdapter.addFragment(ProfilesFragment(text),"Profiles")
+            val pagerAdapter = PagerAdapter(childFragmentManager)
+            pagerAdapter.addFragment(ExploreFragment.newInstance(text))
+            pagerAdapter.addTitle("Explore")
+
+            pagerAdapter.addFragment(ProfilesFragment.newInstance(text))
+            pagerAdapter.addTitle("Profiles")
+
             viewPager.adapter = pagerAdapter
             tabLayout.setupWithViewPager(viewPager)
         }

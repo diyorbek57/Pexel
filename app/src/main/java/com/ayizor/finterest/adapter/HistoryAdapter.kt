@@ -14,49 +14,65 @@ import com.ayizor.finterest.helper.HistoryHelper
 class HistoryAdapter(context: Context, var helperList: ArrayList<String>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val prefsManager = HistoryHelper.getInstance(context)
+        private val prefsManager = HistoryHelper.getInstance(context)
 
-    fun addHelper(text: String) {
-        if (helperList.contains(text)) helperList.remove(text)
-        val newList = ArrayList<String>()
-        newList.add(text)
-        newList.addAll(helperList)
-        helperList.clear()
-        helperList.addAll(newList)
-        prefsManager!!.saveArrayList(HistoryHelper.KEY_LIST, helperList)
-    }
+        private var itemClicked: RecyclerViewItemClick? = null
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun clearHelper(element: String) {
-        helperList.remove(element)
-        prefsManager!!.saveArrayList(HistoryHelper.KEY_LIST, helperList)
-        notifyDataSetChanged()
-    }
+        fun addHelper(text: String) {
+            if (helperList.contains(text)) helperList.remove(text)
+            val newList = ArrayList<String>()
+            newList.add(text)
+            newList.addAll(helperList)
+            helperList.clear()
+            helperList.addAll(newList)
+            prefsManager!!.saveArrayList(HistoryHelper.KEY_ARRAY_LIST, helperList)
+        }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_search_helper_text, parent, false)
-        return HelperTextViewHolder(view)
-    }
+        @SuppressLint("NotifyDataSetChanged")
+        fun clearHelper(element: String) {
+            helperList.remove(element)
+            prefsManager!!.saveArrayList(HistoryHelper.KEY_ARRAY_LIST, helperList)
+            notifyDataSetChanged()
+        }
 
-    class HelperTextViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvHelp: TextView = view.findViewById(R.id.tv_history)
-        val ivClear: ImageView = view.findViewById(R.id.iv_clear)
-    }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+            val view =
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_search_helper_text, parent, false)
+            return HelperTextViewHolder(view)
+        }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val text = helperList[position]
-        if (holder is HelperTextViewHolder) {
-            holder.tvHelp.text = text
+        class HelperTextViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val tvHelp: TextView = view.findViewById(R.id.tv_history)
+            val ivClear: ImageView = view.findViewById(R.id.iv_clear)
+        }
 
-            holder.ivClear.setOnClickListener {
-                clearHelper(text)
+        @SuppressLint("NotifyDataSetChanged")
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+            val text = helperList[position]
+            if (holder is HelperTextViewHolder) {
+                holder.tvHelp.text = text
+
+                holder.ivClear.setOnClickListener {
+                    clearHelper(text)
+                }
+
+                holder.tvHelp.setOnClickListener {
+                    itemClicked?.onItemClick(text);
+                    notifyDataSetChanged()
+                }
             }
         }
-    }
 
-    override fun getItemCount(): Int {
-        return helperList.size
+        override fun getItemCount(): Int {
+            return helperList.size
+        }
+
+        fun onItemClick(mclick: RecyclerViewItemClick) {
+            this.itemClicked = mclick
+        }
+
+        interface RecyclerViewItemClick {
+            fun onItemClick(text: String)
+        }
     }
-}

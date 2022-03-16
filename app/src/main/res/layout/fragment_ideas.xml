@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_search"
         android:layout_width="match_parent"
@@ -132,5 +135,5 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
+    </RelativeLayout>
 </RelativeLayout>

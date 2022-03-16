@@ -17,7 +17,6 @@ data class User(
     @Expose val last_name: String? = null,
     @SerializedName("portfolio_url")
     @Expose val urls: String = "",
-
     @SerializedName("bio")
     @Expose val bio: String = "",
     @SerializedName("location")
@@ -34,5 +33,5 @@ data class User(
     @Expose val twitter_username: String = "",
     @SerializedName("profile_image")
     @Expose val profile_image: ProfileImage,
-    val photos: ArrayList<UserPhoto>
+
 ) : Serializable

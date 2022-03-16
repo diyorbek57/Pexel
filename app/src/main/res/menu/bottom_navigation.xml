@@ -13,5 +13,9 @@
         android:id="@+id/fragment_message"
         android:icon="@drawable/ic_message"
         android:title="" />
+    <item
+        android:id="@+id/fragment_profile"
+        android:icon="@drawable/ic_message"
+        android:title="" />
 
 </menu>
